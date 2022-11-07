@@ -17,7 +17,7 @@
     transition: all 0.4s;
 }
 .navLink:hover {
-    color: #41e0fd !important;
+    color: #7f56fd !important;
 }
 .navItemMiddle {
     display: flex;

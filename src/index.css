@@ -15,7 +15,9 @@ a {
     text-decoration: none !important;
     color: #fff !important;
 }
-
+img {
+    max-width: 100%;
+}
 main {
     min-height: 100% !important;
     position: relative !important;
@@ -32,9 +34,23 @@ h4 {
 a {
     text-decoration: none !important;
 }
+.custom-btn {
+    background: #7f56fd;
+    color: #fff;
+    font-weight: 500;
+    padding: 12px 35px;
+    font-size: 15px;
+    text-transform: uppercase;
+    border-radius: 30px;
+    display: inline-block;
+}
+.custom-btn:hover {
+    background: #333;
+    color: #fff;
+}
 .navbar-nav .nav-link.active,
 .navbar-nav .show > .nav-link {
-    color: #41e0fd !important;
+    color: #7f56fd!important;
 }
 .nav-link {
     color: #000 !important;

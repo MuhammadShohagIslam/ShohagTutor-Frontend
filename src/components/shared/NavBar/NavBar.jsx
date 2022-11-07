@@ -7,7 +7,7 @@ const NavBar = () => {
     return (
         <>
             <Navbar
-                className={classes.navBar}
+                className={`${classes.navBar}`}
                 expand="lg"
                 bg="dark"
                 variant="dark"

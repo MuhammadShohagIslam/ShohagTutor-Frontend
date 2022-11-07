@@ -1,0 +1,30 @@
+.aboutTextWrapper {
+    padding-left: 30px;
+    margin-top: 85px;
+}
+.profileImgWrapper{
+    text-align: end;
+}
+.profileImg{
+    max-width: 380px;
+    height: 400px;
+}
+.aboutText {
+    border-bottom: 1px dashed #c1c1c1;
+    margin: 0;
+    padding-bottom: 30px;
+}
+.aboutTextList{
+    list-style-type: none;
+    padding: 0;
+    margin: 30px 0;
+}
+.aboutTextListItem {
+    font-size: 15px;
+    margin-bottom: 10px;
+    color: #636262;
+}
+.aboutTextListItemSpan {
+    color: #000;
+    font-weight: 600;
+}

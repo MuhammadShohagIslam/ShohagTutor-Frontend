@@ -1,0 +1,39 @@
+.sectionWrapper {
+    text-align: center;
+    margin-bottom: 60px;
+}
+.sectionTitle {
+    position: relative;
+    color: #273f59;
+    font-size: 35px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0;
+    padding-bottom: 20px;
+}
+.sectionTitle::after {
+    content: '';
+    position: absolute;
+    background: #7f56fd;
+    width: 40px;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.sectionTitle::before {
+    content: '';
+    position: absolute;
+    background: #7f56fd;
+    width: 70px;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.sectionInfo {
+    margin: 30px auto 0;
+    max-width: 545px;
+}
