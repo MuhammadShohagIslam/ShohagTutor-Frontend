@@ -10,8 +10,9 @@ const ServiceCard = ({ service }) => {
         <>
             <Col lg={4} md={6} sm={12} className="mb-4">
                 <Card className={classes.serviceCard}>
+                    <Card.Header className="bg-white">Featured</Card.Header>
                     <Card.Img
-                        className={classes.serviceCardImage}
+                        className={`${classes.serviceCardImage} rounded-0`}
                         variant="top"
                         alt={name}
                         src={img}

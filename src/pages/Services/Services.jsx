@@ -2,10 +2,11 @@ import React from "react";
 import { Container, Row, Spinner } from "react-bootstrap";
 import ServiceCard from "../../components/shared/ServiceCard/ServiceCard";
 import Main from "../../layout/Main";
-import useServiceFetch from "./../../hooks/useServiceFetch";
+import useFetch from './../../hooks/useFetch';
+
 
 const Services = () => {
-    const { data, loading } = useServiceFetch("http://localhost:5000/services");
+    const { data, loading } = useFetch("http://localhost:5000/services");
     return (
         <Main>
             <Container className="py-5">
@@ -29,8 +30,8 @@ const Services = () => {
                                     ))}
                                 </>
                             ) : (
-                                <h3 className="text-center text-white">
-                                    There is no course
+                                <h3 className="text-center text-dark">
+                                    There is no Services
                                 </h3>
                             )}
                         </>

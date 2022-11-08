@@ -3,10 +3,10 @@ import { Container,Row } from 'react-bootstrap';
 import SectionTitle from './../../../components/shared/SectionTitle/SectionTitle';
 import ServiceCard from './../../../components/shared/ServiceCard/ServiceCard';
 import { Spinner } from 'react-bootstrap';
-import useServiceFetch from './../../../hooks/useServiceFetch';
+import useFetch from './../../../hooks/useFetch';
 
 const Services = () => {
-    const { data, loading } = useServiceFetch("http://localhost:5000/services?limit=3");
+    const { data, loading } = useFetch("http://localhost:5000/services?limit=3");
     console.log(data);
     return (
         <>
@@ -35,8 +35,8 @@ const Services = () => {
                                     ))}
                                 </>
                             ) : (
-                                <h3 className="text-center text-white">
-                                    There is no course
+                                <h3 className="text-center text-dark">
+                                    There is no Services
                                 </h3>
                             )}
                         </>

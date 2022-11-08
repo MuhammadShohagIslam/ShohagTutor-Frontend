@@ -1,14 +1,14 @@
 import React from 'react';
 import Main from '../../layout/Main';
 import { Container,Spinner,Row } from 'react-bootstrap';
-import useBlogFetch from '../../hooks/useBlogFetch';
 import Blog from '../../components/shared/Blog/Blog';
+import useFetch from '../../hooks/useFetch';
 
 
 
 const Blogs = () => {
-    const {data, loading} = useBlogFetch();
-    console.log(data)
+    const {data, loading } = useFetch("http://localhost:5000/blogs");
+    
     return (
         <Main>
              <article className="mt-5 mb-4">
@@ -30,7 +30,7 @@ const Blogs = () => {
                                         ))}
                                     </>
                                 ) : (
-                                    <h3 className="text-center text-white">
+                                    <h3 className="text-center text-dark">
                                         There is no blog post
                                     </h3>
                                 )}
