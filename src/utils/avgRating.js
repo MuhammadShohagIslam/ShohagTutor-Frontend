@@ -11,20 +11,18 @@ export const avgRating = (reviews) => {
         avgRating = (totalReducer * 5) / highest;
         length = reviews.length;
     }
-    
+
     return (
-        <div className="text-center pb-3 pt-0">
-            <span className="text-danger">
-                <StarRatings
-                    rating={avgRating}
-                    isSelectable={false}
-                    starRatedColor="red"
-                    numberOfStars={5}
-                    starDimension="20px"
-                    starSpacing="2px"
-                />
-                ({length})
-            </span>
-        </div>
+        <span className="text-danger">
+            <StarRatings
+                rating={avgRating}
+                isSelectable={false}
+                starRatedColor="red"
+                numberOfStars={5}
+                starDimension="20px"
+                starSpacing="2px"
+            />
+            ({length})
+        </span>
     );
 };

@@ -7,6 +7,7 @@ import useFetch from './../../hooks/useFetch';
 
 const Services = () => {
     const { data, loading } = useFetch("http://localhost:5000/services");
+  
     return (
         <Main>
             <Container className="py-5">
@@ -26,6 +27,7 @@ const Services = () => {
                                         <ServiceCard
                                             key={service._id}
                                             service={service}
+                                
                                         />
                                     ))}
                                 </>

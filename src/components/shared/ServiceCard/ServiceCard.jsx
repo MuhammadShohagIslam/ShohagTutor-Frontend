@@ -3,14 +3,19 @@ import { Col, Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 import classes from "./ServiceCard.module.css";
+import { avgRating } from "../../../utils/avgRating";
+import useFetch from './../../../hooks/useFetch';
 
 const ServiceCard = ({ service }) => {
     const { _id, img, name, description, price } = service;
+    const { data: reviews, loading: reviewLoading } = useFetch(
+        `http://localhost:5000/reviews?id=${_id}`
+    );
     return (
         <>
             <Col lg={4} md={6} sm={12} className="mb-4">
                 <Card className={classes.serviceCard}>
-                    <Card.Header className="bg-white">Featured</Card.Header>
+                    <Card.Header className="bg-white text-center py-2 pb-3">{avgRating(reviews)}</Card.Header>
                     <Card.Img
                         className={`${classes.serviceCardImage} rounded-0`}
                         variant="top"
