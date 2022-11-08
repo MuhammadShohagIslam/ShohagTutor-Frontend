@@ -65,3 +65,13 @@ footer {
 .spinner-color{
     color: #7f56fd !important;
 }
+.btn{
+    color: #fff !important ;
+    background-color: #7f56fd !important;
+    border: 1px solid #7f56fd !important;
+}
+.btn:hover {
+    color: #000;
+    background-color: transparent !important;
+    border: 1px solid #7f56fd !important;
+}
