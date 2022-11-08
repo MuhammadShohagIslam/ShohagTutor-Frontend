@@ -1,16 +1,22 @@
-import React from "react";
-import { Container, Row, Spinner } from "react-bootstrap";
-import ServiceCard from "../../components/shared/ServiceCard/ServiceCard";
-import Main from "../../layout/Main";
-import useServiceFetch from "./../../hooks/useServiceFetch";
+import React from 'react';
+import { Container,Row } from 'react-bootstrap';
+import SectionTitle from './../../../components/shared/SectionTitle/SectionTitle';
+import ServiceCard from './../../../components/shared/ServiceCard/ServiceCard';
+import { Spinner } from 'react-bootstrap';
+import useServiceFetch from './../../../hooks/useServiceFetch';
 
 const Services = () => {
-    const { data, loading } = useServiceFetch("http://localhost:5000/services");
+    const { data, loading } = useServiceFetch("http://localhost:5000/services?limit=3");
+    console.log(data);
     return (
-        <Main>
-            <Container className="py-5">
-                <Row>
-                    {loading ? (
+        <>
+           <Container className="py-5">
+            <SectionTitle
+                title="Services"
+                info="Check my core service below"
+            />
+            <Row>
+            {loading ? (
                         <div
                             style={{ height: "400px" }}
                             className="d-flex justify-content-center align-items-center"
@@ -35,9 +41,9 @@ const Services = () => {
                             )}
                         </>
                     )}
-                </Row>
-            </Container>
-        </Main>
+            </Row>
+        </Container>  
+        </>
     );
 };
 

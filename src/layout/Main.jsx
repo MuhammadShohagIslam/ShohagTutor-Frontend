@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "../components/shared/Footer/Footer";
 import NavBar from "../components/shared/NavBar/NavBar";
 
 const Main = ({children}) => {
@@ -10,9 +11,7 @@ const Main = ({children}) => {
             <main>
                 {children}
             </main>
-            <footer>
-                
-            </footer>
+           <Footer/>
         </>
     );
 };

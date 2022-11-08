@@ -62,3 +62,6 @@ footer {
 .text-justify {
     text-align: justify;
 }
+.spinner-color{
+    color: #7f56fd !important;
+}

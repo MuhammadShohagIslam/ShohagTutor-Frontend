@@ -36,7 +36,6 @@
     transition: all 0.4s !important;
     font-weight: 500 !important;
 }
-
 .aboutMeButton:hover {
     background-color: transparent !important;
     color: #191c36 !important;
