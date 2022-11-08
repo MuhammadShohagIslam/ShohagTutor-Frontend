@@ -51,7 +51,7 @@ const NavBar = () => {
 
                                 <LinkContainer to="/signup">
                                     <Nav.Link className={classes.navLink}>
-                                        Signup
+                                        SignUp
                                     </Nav.Link>
                                 </LinkContainer>
                             </div>

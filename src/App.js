@@ -1,3 +1,4 @@
+import { Toaster } from "react-hot-toast";
 import { Route, Routes } from "react-router-dom";
 import Blogs from "./pages/Blogs/Blogs";
 import Home from "./pages/Home/Home/Home";
@@ -10,6 +11,7 @@ import Signup from "./pages/Signup/Signup";
 function App() {
     return (
         <>
+        <Toaster/>
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/services" element={<Services />} />

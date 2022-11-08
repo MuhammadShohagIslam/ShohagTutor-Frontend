@@ -129,9 +129,9 @@ const Login = () => {
                                 Don't have an account?{" "}
                                 <Link
                                     className="text-decoration-underline"
-                                    to="/register"
+                                    to="/signup"
                                 >
-                                    Register
+                                    Sign Up
                                 </Link>
                             </p>
                         </Form>
