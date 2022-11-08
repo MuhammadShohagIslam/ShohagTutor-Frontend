@@ -2,10 +2,10 @@
     padding-left: 30px;
     margin-top: 85px;
 }
-.profileImgWrapper{
+.profileImgWrapper {
     text-align: end;
 }
-.profileImg{
+.profileImg {
     max-width: 380px;
     height: 400px;
 }
@@ -14,7 +14,7 @@
     margin: 0;
     padding-bottom: 30px;
 }
-.aboutTextList{
+.aboutTextList {
     list-style-type: none;
     padding: 0;
     margin: 30px 0;
@@ -27,4 +27,17 @@
 .aboutTextListItemSpan {
     color: #000;
     font-weight: 600;
+}
+.aboutMeButton {
+    background-color: #7f56fd !important;
+    border: none !important;
+    font-size: 18px !important;
+    border: 1px solid #7f56fd !important;
+    transition: all 0.4s !important;
+    font-weight: 500 !important;
+}
+
+.aboutMeButton:hover {
+    background-color: transparent !important;
+    color: #191c36 !important;
 }

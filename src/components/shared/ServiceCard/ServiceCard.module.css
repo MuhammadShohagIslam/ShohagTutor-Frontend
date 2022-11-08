@@ -1,0 +1,48 @@
+.serviceCard {
+    height: 450px !important;
+    position: relative;
+}
+.serviceCardImage {
+    height: 220px;
+    width: 100%;
+    background-color: #191c36;
+}
+.serviceCardButtonWrapper {
+    position: absolute;
+    bottom: 14px;
+}
+.serviceCardButton{
+    background-color: #7f56fd !important;
+    border: none !important;
+    font-size: 18px !important;
+    border: 1px solid #7f56fd !important;
+    transition: all .4s !important;
+    font-weight: 500 !important;
+}
+.serviceCardButton:hover{
+   background-color: transparent !important;
+   color: #191c36 !important;
+}
+
+@media only screen and (max-width: 767px) {
+    .serviceCard {
+        height: 460px !important;
+        position: relative;
+    }
+    .serviceCardButtonWrapper {
+        bottom: 18px;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    
+}
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+    .serviceCard {
+        height: 497px !important;
+        position: relative;
+    }
+    .serviceCardButtonWrapper {
+        bottom: 14px;
+    }
+}

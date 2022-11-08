@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Container, Button } from "react-bootstrap";
 import SectionTitle from "../../../components/shared/SectionTitle/SectionTitle";
 import profileImg from "../../../images/PP.jpg";
 import classes from "./AboutMe.module.css";
@@ -14,7 +14,11 @@ const AboutMe = () => {
             <Row>
                 <Col md={6} lg={4}>
                     <div className={classes.profileImgWrapper}>
-                        <img className={classes.profileImg} src={profileImg} alt="Profile" />
+                        <img
+                            className={classes.profileImg}
+                            src={profileImg}
+                            alt="Profile"
+                        />
                     </div>
                 </Col>
 
@@ -32,13 +36,13 @@ const AboutMe = () => {
                                 <ul className={classes.aboutTextList}>
                                     <li className={classes.aboutTextListItem}>
                                         <span
-                                           className={
-                                            classes.aboutTextListItemSpan
-                                        }
+                                            className={
+                                                classes.aboutTextListItemSpan
+                                            }
                                         >
                                             NAME :
                                         </span>{" "}
-                                       Muhammad Shohag Islam
+                                        Muhammad Shohag Islam
                                     </li>
                                     <li
                                         className={
@@ -67,7 +71,7 @@ const AboutMe = () => {
                                         >
                                             JOB TITLE :
                                         </span>{" "}
-                                       Teacher
+                                        Teacher
                                     </li>
                                     <li className={classes.aboutTextListItem}>
                                         <span
@@ -84,12 +88,12 @@ const AboutMe = () => {
                         </Row>
 
                         <div>
-                            <a href="#" className="custom-btn me-3">
-                                DOWNLOAD CV
-                            </a>
-                            <a href="#" className="custom-btn">
-                                Call ME
-                            </a>
+                            <Button className={`${classes.aboutMeButton} me-3`}>
+                                Download CV
+                            </Button>
+                            <Button className={`${classes.aboutMeButton}`}>
+                                Call Me
+                            </Button>
                         </div>
                     </div>
                 </Col>
