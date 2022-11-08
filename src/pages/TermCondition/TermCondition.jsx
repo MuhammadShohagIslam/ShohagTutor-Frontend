@@ -4,6 +4,7 @@ import { Container } from "react-bootstrap";
 import { Row } from "react-bootstrap";
 import { Col } from "react-bootstrap";
 import classes from "./TermCondition.module.css";
+import SectionTitle from "../../components/shared/SectionTitle/SectionTitle";
 
 const TermCondition = () => {
     return (
@@ -12,9 +13,7 @@ const TermCondition = () => {
                 <Row>
                     <Col md={10} className="m-auto bg-white mb-4">
                         <div className={classes.termCondition}>
-                            <h2 className={classes.title}>
-                                Term And Condition
-                            </h2>
+                           <SectionTitle title="Term And Condition"/>
                             <p className={classes.description}>
                                 1. Introduction This website is operated by
                                 [Merchant Name]. The terms “we”, “us”, and “our”
