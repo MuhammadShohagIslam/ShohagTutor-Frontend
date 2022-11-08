@@ -31,7 +31,7 @@ const Footer = () => {
                             </Link>
                         </li>
                     </ul>
-                    <p className={classes.bottomFooterCopyRight}>Copyright © 2018 Themes , All Rights Reserved.</p>
+                    <p className={classes.bottomFooterCopyRight}>Copyright © 2022 ShohagTutor , All Rights Reserved.</p>
                 </div>
             </Container>
         </footer>
