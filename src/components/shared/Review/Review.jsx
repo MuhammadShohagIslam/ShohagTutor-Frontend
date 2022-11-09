@@ -4,7 +4,7 @@ import classes from "./Reviews.module.css";
 import StarRatings from "react-star-ratings";
 
 const Review = ({ review }) => {
-    const { name, body, img, star,reviewedAt } = review;
+    const { name, comment, img, star,reviewedAt } = review;
     return (
         <Card className="mb-3">
             <Card.Body>
@@ -24,7 +24,7 @@ const Review = ({ review }) => {
                     ReviewedAt: {new Date(reviewedAt).toString().substring(4, 16)}
                 </Card.Subtitle>
                 <Card.Text className="pb-2">
-                   {body}
+                   {comment}
                 </Card.Text>
             </Card.Body>
         </Card>

@@ -1,9 +1,19 @@
 import React from "react";
 import { Container, Navbar, Nav } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import { useAuth } from "../../../contexts/AuthProvider/AuthProvider";
 import classes from "./NavBar.module.css";
 
 const NavBar = () => {
+    const { user, logOut } = useAuth();
+    
+    const handleLogOut = () => {
+        logOut()
+            .then()
+            .catch((error) => {
+                console.log(error.message);
+            });
+    };
     return (
         <>
             <Navbar
@@ -39,31 +49,48 @@ const NavBar = () => {
                                         Blog
                                     </Nav.Link>
                                 </LinkContainer>
-                                <LinkContainer to="/add-service">
-                                    <Nav.Link className={classes.navLink}>
-                                        AddService
-                                    </Nav.Link>
-                                </LinkContainer>
-                                <LinkContainer to="/my-reviews">
-                                    <Nav.Link className={classes.navLink}>
-                                        MyReviews
-                                    </Nav.Link>
-                                </LinkContainer>
+
+                                {user && user?.uid && (
+                                    <LinkContainer to="/add-service">
+                                        <Nav.Link className={classes.navLink}>
+                                            AddService
+                                        </Nav.Link>
+                                    </LinkContainer>
+                                )}
+                                {user && user?.uid && (
+                                    <LinkContainer to="/my-reviews">
+                                        <Nav.Link className={classes.navLink}>
+                                            MyReviews
+                                        </Nav.Link>
+                                    </LinkContainer>
+                                )}
                             </div>
                             <div className="d-lg-flex">
-                                <LinkContainer to="/login">
+                                {user && user?.uid ? (
                                     <Nav.Link
                                         className={`${classes.navLink} me-lg-0 me-2`}
+                                        onClick={handleLogOut}
                                     >
-                                        Login
+                                        LogOut
                                     </Nav.Link>
-                                </LinkContainer>
-
-                                <LinkContainer to="/signup">
-                                    <Nav.Link className={classes.navLink}>
-                                        SignUp
-                                    </Nav.Link>
-                                </LinkContainer>
+                                ) : (
+                                    <>
+                                        <LinkContainer to="/login">
+                                            <Nav.Link
+                                                className={classes.navLink}
+                                            >
+                                                Login
+                                            </Nav.Link>
+                                        </LinkContainer>
+                                        <LinkContainer to="/signup">
+                                            <Nav.Link
+                                                className={classes.navLink}
+                                            >
+                                                SignUp
+                                            </Nav.Link>
+                                        </LinkContainer>
+                                    </>
+                                )}
                             </div>
                         </Nav>
                     </Navbar.Collapse>

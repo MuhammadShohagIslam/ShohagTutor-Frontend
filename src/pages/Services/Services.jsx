@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container, Row, Spinner } from "react-bootstrap";
 import ServiceCard from "../../components/shared/ServiceCard/ServiceCard";
 import Main from "../../layout/Main";
-import useFetch from './../../hooks/useFetch';
-
+import useFetch from "./../../hooks/useFetch";
 
 const Services = () => {
     const { data, loading } = useFetch("http://localhost:5000/services");
-  
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <Main>
             <Container className="py-5">
@@ -17,7 +20,10 @@ const Services = () => {
                             style={{ height: "400px" }}
                             className="d-flex justify-content-center align-items-center"
                         >
-                            <Spinner animation="border" className="spinner-color" />
+                            <Spinner
+                                animation="border"
+                                className="spinner-color"
+                            />
                         </div>
                     ) : (
                         <>
@@ -27,7 +33,6 @@ const Services = () => {
                                         <ServiceCard
                                             key={service._id}
                                             service={service}
-                                
                                         />
                                     ))}
                                 </>
