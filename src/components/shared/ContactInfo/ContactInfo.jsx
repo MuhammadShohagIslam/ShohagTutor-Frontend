@@ -8,7 +8,7 @@ const ContactInfo = ({ info, icon }) => {
             <Card className={`border-0 text-center`}>
                 <Card.Body>
                     {icon}
-                    <Card.Title className="mt-3"> {info}</Card.Title>
+                    <Card.Title className="mt-3"><h5> {info}</h5></Card.Title>
                 </Card.Body>
             </Card>
         </Col>

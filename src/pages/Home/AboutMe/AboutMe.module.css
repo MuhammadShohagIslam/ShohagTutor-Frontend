@@ -46,18 +46,50 @@
         max-width: 100%;
         height: 300px;
     }
+    .aboutTextWrapper {
+        padding-left: 0px;
+        margin-top: 35px;
+    }
+    .profileImgWrapper {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .aboutTextList {
+        margin: 5px 0;
+    }
+    .aboutMeButton {
+        margin-top: 20px;
+    }
+    .aboutText {
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+    }
 } /* End Small Devices */
 
 /* Start Medium Devices */
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-    .singleBlog {
-        padding: 31px !important;
+    .profileImg {
+        margin-top: 70px;
+        max-width: 100%;
+        height: 350px;
     }
-    .blogTitle {
-        font-size: 26px;
+    .profileImgWrapper {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
-    .blogDescription {
-        font-size: 17px;
+    .aboutTextList {
+        margin: 5px 0;
+    }
+    .aboutMeButton {
+        margin-top: 20px;
+    }
+    .aboutText {
+        padding-bottom: 15px;
     }
 } /* End Medium Devices */
-

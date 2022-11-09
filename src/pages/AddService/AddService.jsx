@@ -69,8 +69,8 @@ const AddService = () => {
             </Helmet>
             <Container className="my-5">
                 <Row className="m-0">
-                    <Col lg={7} className="m-auto bg-dark p-5">
-                        <h2 className="text-white text-center mb-5">
+                    <Col lg={7} className="m-auto bg-dark p-lg-5 p-4">
+                        <h2 className="text-white text-center mb-4">
                             Let's Create New Service
                         </h2>
                         <Form onSubmit={handleServiceSubmit}>
@@ -123,7 +123,7 @@ const AddService = () => {
 
                             <Button
                                 size="lg"
-                                className="text-white border border-white"
+                                className="text-white"
                                 variant="outline-dark"
                                 type="submit"
                             >

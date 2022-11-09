@@ -59,3 +59,10 @@
         width: 253px;
     }
 } /* End Small Devices */
+
+/* Start Medium Devices */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .jumbotron {
+        height: 300px;
+    }
+} /* End Medium Devices */

@@ -36,3 +36,18 @@
     margin: 15px 0 0;
     color: #fff;
 }
+
+/* Start Small Devices */
+@media only screen and (max-width: 767px) {
+    .footer {
+        padding-top: 45px;
+        padding-bottom: 45px;
+    }
+    .bottomFooter {
+        margin-top: 24px;
+        padding-top: 24px;
+    }
+    .bottomFooterCopyRight {
+       font-size: 14px;
+    }
+} /* End Small Devices */

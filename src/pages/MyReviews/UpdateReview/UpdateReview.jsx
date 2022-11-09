@@ -78,7 +78,6 @@ const UpdateReview = () => {
         setActive(true);
     };
 
-    console.log(id);
     return (
         <Main>
             <Helmet>

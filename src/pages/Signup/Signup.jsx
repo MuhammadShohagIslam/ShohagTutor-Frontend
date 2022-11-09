@@ -139,24 +139,25 @@ const Signup = () => {
             ) : (
                 <Container className="my-5">
                     <Row className="m-0">
-                        <Col lg={5} className="m-auto bg-dark p-5">
-                            <h2 className="text-white text-center mb-5">
+                        <Col lg={5} className="m-auto bg-dark p-lg-5 p-4">
+                            <h2 className="text-white text-center fs-lg-3 fs-5 mb-lg-5 mb-3">
                                 Sign Up Connected With Me
                             </h2>
 
                             <div className="d-grid gap-2">
                                 <Button
-                                    className="fs-5 text-white border border-white d-flex justify-content-center"
-                                    variant="outline-dark"
-                                    size="lg"
+                                    className="fs-4 d-flex justify-content-center px-2"
+                                    size="sm"
                                     onClick={(e) =>
                                         handleSignUpWithProvider(e, "google")
                                     }
                                 >
-                                    <div>
-                                        <FaGoogle className="align-baseline mt-1  me-1 fs-4" />
+                                    <div className="d-flex py-2 h-100">
+                                        <FaGoogle className="align-baseline me-2 fs-4" />
                                     </div>
-                                    <div>Continue with Google</div>
+                                    <h5 className="mb-0 fs-lg-3 fs-6 d-flex align-baseline h-100 pt-2">
+                                        Continue with Google
+                                    </h5>
                                 </Button>
                             </div>
                             <h3 className="text-white text-center mt-2">Or</h3>
@@ -243,14 +244,14 @@ const Signup = () => {
                                 </Form.Group>
                                 <Button
                                     size="lg"
-                                    className="text-white border border-white"
+                                    className="text-white"
                                     variant="outline-dark"
                                     type="submit"
                                     disabled={!accepted}
                                 >
                                     Register
                                 </Button>
-                                <hr className="border border-white border-1 opacity-50 mt-5"></hr>
+                                <hr className="border border-white border-1 opacity-50 mt-4"></hr>
                                 <p className="text-white text-center">
                                     Already have an account?{" "}
                                     <Link

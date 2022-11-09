@@ -19,7 +19,7 @@ const Services = () => {
             <Helmet>
                 <title>Services</title>
             </Helmet>
-            <Container className="py-5">
+            <Container className="pt-5 pb-3">
                 <Row>
                     {loading ? (
                         <div

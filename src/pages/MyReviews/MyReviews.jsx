@@ -10,7 +10,7 @@ const MyReviews = () => {
     const [reviewsBySpecificUser, setReviewsBySpecificUser] = useState([]);
     const [loading, setLoading] = useState(true);
     const { user, logOut } = useAuth();
-    console.log(user)
+   
     useEffect(() => {
         setLoading(true);
         axios
@@ -18,7 +18,7 @@ const MyReviews = () => {
                 `http://localhost:5000/reviews/user?name=${user?.displayName}&email=${user?.email}`,
                 {
                     headers: {
-                        "authorization":`Bear ${localStorage.getItem(
+                        authorization: `Bear ${localStorage.getItem(
                             "tutor-token"
                         )}`,
                     },
@@ -66,7 +66,7 @@ const MyReviews = () => {
             <Helmet>
                 <title>MyReviews</title>
             </Helmet>
-            <Container className="mt-5">
+            <Container className="mt-4">
                 <h3 className="text-center py-3">
                     '''Reviews Service By {user?.displayName}'''
                 </h3>
