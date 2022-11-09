@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import StarRatings from "react-star-ratings";
-import { Form, Button, Container, Row, Col } from "react-bootstrap";
+import { Form, Button, Container, Row, Col, Spinner } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { toast } from "react-hot-toast";
+import Swal from "sweetalert2";
 import Main from "../../../layout/Main";
 
 const UpdateReview = () => {
     const [comment, setComment] = useState("");
     const [review, setReview] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [active, setActive] = useState(true);
     const [star, setStar] = useState(0);
     const { id } = useParams();
 
@@ -18,12 +20,16 @@ const UpdateReview = () => {
 
     const loadingReviewById = async (id) => {
         try {
+            setLoading(true);
             const response = await axios.get(
                 `http://localhost:5000/reviews/${id}`
             );
             const data = await response.data;
             setReview(data);
+            setStar(data.star);
+            setLoading(false);
         } catch (error) {
+            setLoading(false);
             console.log(error.message);
         }
     };
@@ -39,22 +45,36 @@ const UpdateReview = () => {
             }
         );
         const data = await response.data;
-        console.log(data);
+        if (data.modifiedCount > 0) {
+            Swal.fire({
+                position: "top",
+                icon: "success",
+                title: `${review?.serviceName} Service Review Updated`,
+                showConfirmButton: false,
+                timer: 1500,
+            });
+        }
     };
 
     const handleClickRating = (newRating) => {
         setStar(newRating);
+        setActive(false);
+    };
+
+    const handleComment = (value) => {
+        setComment(value);
+        setActive(false);
     };
 
     const handleUpdateReviewSubmit = (event) => {
         event.preventDefault();
 
         const reviewUpdateObj = {
-            body: comment,
+            comment,
             star,
         };
         updateReview(reviewUpdateObj);
-        setComment("");
+        setActive(true);
     };
 
     console.log(id);
@@ -62,52 +82,67 @@ const UpdateReview = () => {
         <Main>
             <Container className="my-5">
                 <Row>
-                    <Col lg={5} className="m-auto text-white bg-dark p-5">
-                        <h2 className="text-white text-center mb-3">
-                            Update Review
-                        </h2>
-                        <h5 className="text-center">
-                            The Service Name Of {review.serviceName}
-                        </h5>
-                        <Form>
-                            <Form.Group
-                                className="mb-3"
-                                controlId="formBasicComment"
-                            >
-                                <Form.Label>Comment</Form.Label>
-                                <Form.Control
-                                    as="textarea"
-                                    name="comment"
-                                    defaultValue={review.body}
-                                    onChange={(e) => setComment(e.target.value)}
-                                    placeholder="Leave a comment here"
-                                    style={{ height: "100px" }}
-                                />
-                            </Form.Group>
-                            <h6 className="pb-2">Rating</h6>
-                            <StarRatings
-                                rating={review.star}
-                                starRatedColor="red"
-                                changeRating={handleClickRating}
-                                numberOfStars={5}
-                                starDimension="30px"
-                                name={review._id}
+                    {loading ? (
+                        <div
+                            style={{ height: "300px" }}
+                            className="d-flex justify-content-center align-items-center"
+                        >
+                            <Spinner
+                                animation="border"
+                                className="spinner-color"
                             />
-
-                            <div className="pt-4">
-                                <Button
-                                    className={`btn`}
-                                    variant="primary"
-                                    type="submit"
-                                    onClick={(e) => {
-                                        handleUpdateReviewSubmit(e);
-                                    }}
+                        </div>
+                    ) : (
+                        <Col lg={5} className="m-auto text-white bg-dark p-5">
+                            <h2 className="text-white text-center mb-3">
+                                Update Review
+                            </h2>
+                            <h5 className="text-center">
+                                The Service Name Of {review?.serviceName}
+                            </h5>
+                            <Form>
+                                <Form.Group
+                                    className="mb-3"
+                                    controlId="formBasicComment"
                                 >
-                                    Save
-                                </Button>
-                            </div>
-                        </Form>
-                    </Col>
+                                    <Form.Label>Comment</Form.Label>
+                                    <Form.Control
+                                        as="textarea"
+                                        name="comment"
+                                        defaultValue={review?.comment}
+                                        onChange={(e) =>
+                                            handleComment(e.target.value)
+                                        }
+                                        placeholder="Leave a comment here"
+                                        style={{ height: "100px" }}
+                                    />
+                                </Form.Group>
+                                <h6 className="pb-2">Rating</h6>
+                                <StarRatings
+                                    rating={star}
+                                    starRatedColor="red"
+                                    changeRating={handleClickRating}
+                                    numberOfStars={5}
+                                    starDimension="30px"
+                                    name={review._id}
+                                />
+
+                                <div className="pt-4">
+                                    <Button
+                                        disabled={active}
+                                        className={`btn`}
+                                        variant="primary"
+                                        type="submit"
+                                        onClick={(e) => {
+                                            handleUpdateReviewSubmit(e);
+                                        }}
+                                    >
+                                        Save
+                                    </Button>
+                                </div>
+                            </Form>
+                        </Col>
+                    )}
                 </Row>
             </Container>
         </Main>

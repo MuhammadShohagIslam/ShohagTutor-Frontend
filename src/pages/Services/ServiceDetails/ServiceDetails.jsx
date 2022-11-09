@@ -61,7 +61,7 @@ const ServiceDetails = () => {
                 serviceName: name,
                 name: user?.displayName,
                 email: user?.email,
-               
+
                 img: user?.photoURL,
                 comment,
                 star,

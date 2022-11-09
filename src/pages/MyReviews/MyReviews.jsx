@@ -3,11 +3,8 @@ import Main from "../../layout/Main";
 import { Container, Row, Table, Spinner, Button } from "react-bootstrap";
 import axios from "axios";
 import { useAuth } from "../../contexts/AuthProvider/AuthProvider";
-import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
-import StarRatings from "react-star-ratings";
-import classes from "./MyReviews.module.css";
-import { toast } from "react-hot-toast";
-import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import ReviewTable from "../../components/shared/ReviewTable/ReviewTable";
 const MyReviews = () => {
     const [reviewsBySpecificUser, setReviewsBySpecificUser] = useState();
     const [loading, setLoading] = useState(true);
@@ -39,15 +36,19 @@ const MyReviews = () => {
         );
         const data = await response.data;
         if (data?.deletedCount > 0) {
-            toast.error(`Review ${serviceName} Deleted Successfully`);
+            Swal.fire({
+                position: "top",
+                icon: "error",
+                title: `Review ${serviceName} Deleted Successfully`,
+                showConfirmButton: false,
+                timer: 1500,
+            });
             const remainingReviews = reviewsBySpecificUser.filter(
                 (review) => review._id !== id
             );
             setReviewsBySpecificUser([...remainingReviews]);
         }
     };
-    console.log(reviewsBySpecificUser);
-    const handleReviewEdit = (id) => {};
 
     return (
         <Main>
@@ -55,7 +56,7 @@ const MyReviews = () => {
                 <h3 className="text-center py-3">
                     '''Reviews Service By {user?.displayName}'''
                 </h3>
-                <Row>
+                <Row className="m-0">
                     {loading ? (
                         <div
                             style={{ height: "300px" }}
@@ -69,74 +70,12 @@ const MyReviews = () => {
                     ) : (
                         <>
                             {reviewsBySpecificUser.length > 0 ? (
-                                <Table
-                                    className="text-center"
-                                    striped
-                                    bordered
-                                    hover
-                                    variant="dark"
-                                >
-                                    <thead>
-                                        <tr>
-                                            <th>Service Name</th>
-                                            <th>Review</th>
-                                            <th>Edit</th>
-                                            <th>Delete</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {reviewsBySpecificUser.map(
-                                            (userReview) => (
-                                                <tr key={userReview._id}>
-                                                    <td>
-                                                        {userReview.serviceName}
-                                                    </td>
-                                                    <td>
-                                                        <StarRatings
-                                                            rating={
-                                                                userReview.star
-                                                            }
-                                                            isSelectable={false}
-                                                            starRatedColor="red"
-                                                            numberOfStars={5}
-                                                            starDimension="20px"
-                                                            starSpacing="2px"
-                                                        />
-                                                    </td>
-                                                    <td>
-                                                        <Link
-                                                            to={`/my-reviews/update/${userReview._id}`}
-                                                        >
-                                                            <Button
-                                                                onClick={() =>
-                                                                    handleReviewEdit(
-                                                                        userReview._id
-                                                                    )
-                                                                }
-                                                                className="btn"
-                                                            >
-                                                                <AiOutlineEdit />
-                                                            </Button>
-                                                        </Link>
-                                                    </td>
-                                                    <td>
-                                                        <Button
-                                                            onClick={() =>
-                                                                handleReviewDelete(
-                                                                    userReview._id,
-                                                                    userReview.serviceName
-                                                                )
-                                                            }
-                                                            className={`${classes.dangerButton} btn`}
-                                                        >
-                                                            <AiOutlineDelete />
-                                                        </Button>
-                                                    </td>
-                                                </tr>
-                                            )
-                                        )}
-                                    </tbody>
-                                </Table>
+                                <ReviewTable
+                                    reviewsBySpecificUser={
+                                        reviewsBySpecificUser
+                                    }
+                                    handleReviewDelete={handleReviewDelete}
+                                />
                             ) : (
                                 <h3 className="text-center text-dark">
                                     No reviews were added
