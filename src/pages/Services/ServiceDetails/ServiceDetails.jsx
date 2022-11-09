@@ -20,6 +20,7 @@ const ServiceDetails = () => {
     const { id } = useParams();
     const { user } = useAuth();
     const { data, loading } = useFetch(`http://localhost:5000/services/${id}`);
+    const { _id, name, description, price, img } = data;
 
     const loadingReviews = useCallback(async () => {
         const response = await fetch(`http://localhost:5000/reviews?id=${id}`);
@@ -31,9 +32,6 @@ const ServiceDetails = () => {
         loadingReviews();
     }, [loadingReviews]);
 
-    const { _id, name, description, price, img } = data;
-
-    console.log(reviews);
     const handleReviewShowModal = () => {
         setShowReviewModal((prev) => !prev);
     };
@@ -55,19 +53,31 @@ const ServiceDetails = () => {
         }
     };
 
-    const handleReviewSubmit = (event) => {
-        event.preventDefault();
-        const reviewObj = {
-            name: user?.displayName,
-            email: user?.email,
-            serviceId: _id,
-            img: user?.photoURL,
-            body: comment,
-            star,
-        };
-        createReview(reviewObj);
-        loadingReviews(_id);
-        setComment("");
+    const handleReviewSubmit = async (event) => {
+        try {
+            event.preventDefault();
+            const reviewObj = {
+                serviceId: _id,
+                serviceName: name,
+                name: user?.displayName,
+                email: user?.email,
+               
+                img: user?.photoURL,
+                comment,
+                star,
+            };
+            createReview(reviewObj);
+            setComment("");
+            loadingReviews();
+            const response = await fetch(
+                `http://localhost:5000/reviews?id=${id}`
+            );
+            const data = await response.json();
+            setReviews(data);
+        } catch (error) {
+            console.log(error.message, "sfs");
+            toast.error(error.message);
+        }
     };
     return (
         <Main>
@@ -108,7 +118,9 @@ const ServiceDetails = () => {
                 <Container>
                     <Row className="mt-5">
                         <Col lg={6}>
-                            <h3>Reviews From Student of {name}</h3>
+                            <h4 className="mb-4">
+                                Reviews From Student of {name}
+                            </h4>
                             {loading ? (
                                 <div
                                     style={{ height: "400px" }}

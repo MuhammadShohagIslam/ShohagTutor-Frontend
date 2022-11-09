@@ -39,6 +39,16 @@ const NavBar = () => {
                                         Blog
                                     </Nav.Link>
                                 </LinkContainer>
+                                <LinkContainer to="/add-service">
+                                    <Nav.Link className={classes.navLink}>
+                                        AddService
+                                    </Nav.Link>
+                                </LinkContainer>
+                                <LinkContainer to="/my-reviews">
+                                    <Nav.Link className={classes.navLink}>
+                                        MyReviews
+                                    </Nav.Link>
+                                </LinkContainer>
                             </div>
                             <div className="d-lg-flex">
                                 <LinkContainer to="/login">
