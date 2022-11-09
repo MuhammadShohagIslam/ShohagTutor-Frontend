@@ -7,6 +7,7 @@ import { toast } from "react-hot-toast";
 import { useAuth } from "./../../contexts/AuthProvider/AuthProvider";
 import { GoogleAuthProvider } from "firebase/auth";
 import { Helmet } from "react-helmet-async";
+import axios from "axios";
 
 const Login = () => {
     const [isFetching, setIsFetching] = useState(true);
@@ -41,9 +42,25 @@ const Login = () => {
 
         loginWithEmailAndPassword(email, password)
             .then((result) => {
+                const user = result.user;
+
+                const currentUser = {
+                    name: user.displayName,
+                    email: user.email,
+                };
+                axios
+                    .post("http://localhost:5000/jwt", currentUser, {
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                    })
+                    .then((res) => {
+                        const data = res.data;
+                        localStorage.setItem("tutor-token", data.token);
+                        navigate(from, { replace: true });
+                    });
                 form.reset();
                 toast.success("Login Successfully!");
-                navigate(from, { replace: true });
             })
             .catch((error) => {
                 toast.error(error.message.split("Firebase: ").join(""));
@@ -63,7 +80,23 @@ const Login = () => {
     const popupForSignInProvider = (provider) => {
         registerAndLoginWithProvider(provider)
             .then((result) => {
-                navigate(from, { replace: true });
+                const user = result.user;
+
+                const currentUser = {
+                    name: user?.displayName,
+                    email: user?.email,
+                };
+                axios
+                    .post("http://localhost:5000/jwt", currentUser, {
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                    })
+                    .then((res) => {
+                        const data = res.data;
+                        localStorage.setItem("tutor-token", data.token);
+                        navigate(from, { replace: true });
+                    });
             })
             .catch((error) => {
                 toast.error(error.message);

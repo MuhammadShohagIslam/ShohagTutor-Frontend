@@ -11,6 +11,8 @@ import { avgRating } from "./../../../utils/avgRating";
 import { toast } from "react-hot-toast";
 import Review from "../../../components/shared/Review/Review";
 import { Helmet } from "react-helmet-async";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const ServiceDetails = () => {
     const [showReviewModal, setShowReviewModal] = useState(false);
@@ -54,17 +56,27 @@ const ServiceDetails = () => {
     };
 
     const createReview = async (reviewObj) => {
-        const response = await fetch("http://localhost:5000/reviews", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(reviewObj),
-        });
-        const data = await response.json();
-        if (data?.acknowledged) {
-            toast.success("Review Created Successfully");
-        }
+        axios
+            .post("http://localhost:5000/reviews", reviewObj, {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
+            .then((res) => {
+                const data = res.data;
+                if (data?.acknowledged) {
+                    toast.success("Review Created Successfully");
+                }
+            })
+            .catch((error) => {
+                Swal.fire({
+                    position: "top",
+                    icon: "error",
+                    title: `${error.response.data.message}`,
+                    showConfirmButton: false,
+                    timer: 2500,
+                });
+            });
     };
 
     const handleReviewSubmit = async (event) => {
@@ -151,7 +163,7 @@ const ServiceDetails = () => {
                     </section>
                     <section>
                         <Container>
-                            <Row className="mt-5">
+                            <Row className="my-5">
                                 <Col lg={6}>
                                     <h4 className="mb-4">
                                         Reviews From Student of {name}

@@ -1,17 +1,24 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { Row, Col, Container, Button, Image } from "react-bootstrap";
 import SectionTitle from "../../../components/shared/SectionTitle/SectionTitle";
 import profileImg from "../../../images/PP.jpg";
 import classes from "./AboutMe.module.css";
+import AOS from 'aos';
 
 const AboutMe = () => {
+
+    useEffect(() => {
+        AOS.init();
+        AOS.refresh();
+    }, []);
+
     return (
         <Container className="py-5">
             <SectionTitle
                 title="About Me"
                 info="I am Reviewing classroom or curricula topics and assignments. Assisting students with homework, projects, test preparation, papers, research and other academic tasks."
             />
-            <Row>
+            <Row data-aos="fade-up" className="m-0">
                 <Col md={6} lg={4}>
                     <div className={classes.profileImgWrapper}>
                         <Image

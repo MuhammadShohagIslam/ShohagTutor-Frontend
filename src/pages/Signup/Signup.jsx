@@ -7,6 +7,7 @@ import { toast } from "react-hot-toast";
 import { Container, Spinner, Row, Col, Button, Form } from "react-bootstrap";
 import { FaGoogle } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
+import axios from "axios";
 
 const Signup = () => {
     const [isFetching, setIsFetching] = useState(true);
@@ -47,8 +48,24 @@ const Signup = () => {
 
         createUser(email, password)
             .then((result) => {
-                form.reset();
                 handleProfileUpdate(fullName, photoURL);
+                const user = result.user;
+
+                const currentUser = {
+                    name: user.displayName,
+                    email: user.email,
+                };
+                axios
+                    .post("http://localhost:5000/jwt", currentUser, {
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                    })
+                    .then((res) => {
+                        const data = res.data;
+                        localStorage.setItem("tutor-token", data.token);
+                    });
+                form.reset();
                 navigate("/");
             })
             .catch((error) => {
@@ -81,6 +98,22 @@ const Signup = () => {
     const popupForSignInProvider = (provider) => {
         registerAndLoginWithProvider(provider)
             .then((result) => {
+                const user = result.user;
+
+                const currentUser = {
+                    name: user?.displayName,
+                    email: user?.email,
+                };
+                axios
+                    .post("http://localhost:5000/jwt", currentUser, {
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                    })
+                    .then((res) => {
+                        const data = res.data;
+                        localStorage.setItem("tutor-token", data.token);
+                    });
                 navigate("/");
             })
             .catch((error) => {

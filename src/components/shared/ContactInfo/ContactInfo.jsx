@@ -1,17 +1,16 @@
 import React from "react";
-import { Col } from "react-bootstrap";
+import { Col, Card } from "react-bootstrap";
 import classes from "./ContactInfo.module.css";
 
-const ContactInfo = ({ title, info, icon }) => {
+const ContactInfo = ({ info, icon }) => {
     return (
-        <Col md={6} lg={4} className="mb-3">
-            <div className={classes.contactInfo}>
-                <div className={classes.contactIcon}>{icon}</div>
-                <div className="ms-3">
-                    <h4>{title}: </h4>
-                    <p className="text-justify">{info}</p>
-                </div>
-            </div>
+        <Col md={6} lg={4} className={`${classes.contactInfo} mb-3`}>
+            <Card className={`border-0 text-center`}>
+                <Card.Body>
+                    {icon}
+                    <Card.Title className="mt-3"> {info}</Card.Title>
+                </Card.Body>
+            </Card>
         </Col>
     );
 };

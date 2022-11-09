@@ -7,30 +7,40 @@ import Swal from "sweetalert2";
 import ReviewTable from "../../components/shared/ReviewTable/ReviewTable";
 import { Helmet } from "react-helmet-async";
 const MyReviews = () => {
-    const [reviewsBySpecificUser, setReviewsBySpecificUser] = useState();
+    const [reviewsBySpecificUser, setReviewsBySpecificUser] = useState([]);
     const [loading, setLoading] = useState(true);
-    const { user } = useAuth();
-
+    const { user, logOut } = useAuth();
+    console.log(user)
     useEffect(() => {
-        loadingReviewsBySpecificUser(user?.displayName);
-    }, [user?.displayName]);
+        setLoading(true);
+        axios
+            .get(
+                `http://localhost:5000/reviews/user?name=${user?.displayName}&email=${user?.email}`,
+                {
+                    headers: {
+                        "authorization":`Bear ${localStorage.getItem(
+                            "tutor-token"
+                        )}`,
+                    },
+                }
+            )
+            .then((res) => {
+                const data = res.data;
+                setReviewsBySpecificUser(data);
+                setLoading(false);
+            })
+            .catch((error) => {
+                if (
+                    error.response.status === 401 ||
+                    error.response.status === 403
+                ) {
+                    return logOut();
+                }
+                setLoading(false);
+            });
+    }, [user?.displayName, user?.email, logOut]);
 
-    const loadingReviewsBySpecificUser = async (user) => {
-        try {
-            setLoading(true);
-            console.log(user);
-            const response = await axios.get(
-                `http://localhost:5000/reviews?name=${user?.displayName}`
-            );
-            const data = await response.data;
-            setReviewsBySpecificUser(data);
-            setLoading(false);
-        } catch (error) {
-            setLoading(false);
-        }
-    };
-
-    const handleReviewDelete = async (id, serviceName) => {
+    const handleReviewDelete = async (e, id, serviceName) => {
         console.log(id);
         const response = await axios.delete(
             `http://localhost:5000/reviews/${id}`

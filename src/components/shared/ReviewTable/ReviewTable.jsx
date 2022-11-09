@@ -39,8 +39,9 @@ const ReviewTable = ({ reviewsBySpecificUser, handleReviewDelete }) => {
                         </td>
                         <td>
                             <Button
-                                onClick={() =>
+                                onClick={(e) =>
                                     handleReviewDelete(
+                                        e,
                                         userReview._id,
                                         userReview.serviceName
                                     )

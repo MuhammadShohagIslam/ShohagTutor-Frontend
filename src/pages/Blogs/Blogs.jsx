@@ -5,8 +5,6 @@ import Blog from '../../components/shared/Blog/Blog';
 import useFetch from '../../hooks/useFetch';
 import { Helmet } from 'react-helmet-async';
 
-
-
 const Blogs = () => {
     const {data, loading } = useFetch("http://localhost:5000/blogs");
     

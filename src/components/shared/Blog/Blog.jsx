@@ -1,10 +1,17 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Col } from "react-bootstrap";
 import classes from "./Blog.module.css";
+import AOS from 'aos';
 
 const Blog = ({ blog }) => {
+
+    useEffect(() => {
+        AOS.init();
+        AOS.refresh();
+    }, []);
+
     return (
-        <Col md={8} className="m-auto bg-white mb-4">
+        <Col data-aos="fade-up" md={8} className="m-auto bg-white mb-4">
             <div className={classes.singleBlog}>
                 <h2 className={classes.blogTitle}>{blog.title}</h2>
                 <h6 className="mb-4">

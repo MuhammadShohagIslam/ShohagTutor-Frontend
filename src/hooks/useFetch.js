@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const useFetch = (uri, method, isToken = false) => {
+const useFetch = (uri, isToken = false, method) => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -11,10 +11,7 @@ const useFetch = (uri, method, isToken = false) => {
                 let response = await fetch(uri, {
                     method: method || "GET",
                     headers: {
-                        "Content-Type": "application/json",
-                        token: isToken
-                            ? `Bear ${localStorage.getItem("token")}`
-                            : null,
+                        "Content-Type": "application/json"
                     },
                 });
                 const data = await response.json();

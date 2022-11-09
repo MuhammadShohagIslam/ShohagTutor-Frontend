@@ -4,12 +4,14 @@ import ServiceCard from "../../components/shared/ServiceCard/ServiceCard";
 import Main from "../../layout/Main";
 import useFetch from "./../../hooks/useFetch";
 import { Helmet } from "react-helmet-async";
+import AOS from 'aos';
 
 const Services = () => {
     const { data, loading } = useFetch("http://localhost:5000/services");
 
     useEffect(() => {
         window.scrollTo(0, 0);
+        AOS.init();
     }, []);
 
     return (

@@ -1,5 +1,5 @@
 .jumbotron {
-    background-image: url("../../../images/jumbotron1.jpg");
+    background-image: url("../../../images/eduTech.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -15,7 +15,7 @@
     height: 100%;
     left: 0;
     top: 0;
-    opacity: .75;
+    opacity: .92;
 }
 .jumbotronWrapper {
     display: flex;

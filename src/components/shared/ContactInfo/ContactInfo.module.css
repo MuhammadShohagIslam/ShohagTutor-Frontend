@@ -1,20 +1,7 @@
-.contactInfo {
-  display: flex;
+.contactInfo{
+  border: 1px solid transparent;
+  transition: all .3s;
 }
-.contactIcon{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.contactInfoTitle{
-   padding: 0 0 0 60px;
-   font-size: 22px;
-   font-weight: 600;
-   margin-bottom: 5px;
-   color: #45505b;
-}
-.contactInfoParagraph{
-    padding: 0 0 0 60px;
-    font-size: 14px;
-    color: #728394;
+.contactInfo:hover{
+  border: 1px solid #7f56fd;
 }
