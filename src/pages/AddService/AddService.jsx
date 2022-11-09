@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import Main from "../../layout/Main";
 import { Button, Form, Container, Row, Col } from "react-bootstrap";
 import { toast } from "react-hot-toast";
@@ -6,7 +7,6 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 const AddService = () => {
-
     const handleServiceSubmit = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -38,11 +38,9 @@ const AddService = () => {
 
         createNewService(newServiceObj);
         form.reset();
-
     };
     const createNewService = async (newServiceObj) => {
         try {
-           
             const response = await axios.post(
                 `http://localhost:5000/services`,
                 newServiceObj,
@@ -62,13 +60,13 @@ const AddService = () => {
                     timer: 1500,
                 });
             }
-            
-        } catch (error) {
-           
-        }
+        } catch (error) {}
     };
     return (
         <Main>
+            <Helmet>
+                <title>AddService</title>
+            </Helmet>
             <Container className="my-5">
                 <Row className="m-0">
                     <Col lg={7} className="m-auto bg-dark p-5">

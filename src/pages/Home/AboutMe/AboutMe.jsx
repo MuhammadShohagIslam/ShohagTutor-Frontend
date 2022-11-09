@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Container, Button } from "react-bootstrap";
+import { Row, Col, Container, Button, Image } from "react-bootstrap";
 import SectionTitle from "../../../components/shared/SectionTitle/SectionTitle";
 import profileImg from "../../../images/PP.jpg";
 import classes from "./AboutMe.module.css";
@@ -14,7 +14,8 @@ const AboutMe = () => {
             <Row>
                 <Col md={6} lg={4}>
                     <div className={classes.profileImgWrapper}>
-                        <img
+                        <Image
+                            rounded
                             className={classes.profileImg}
                             src={profileImg}
                             alt="Profile"

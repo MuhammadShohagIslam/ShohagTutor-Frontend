@@ -3,6 +3,7 @@ import Main from '../../layout/Main';
 import { Container,Spinner,Row } from 'react-bootstrap';
 import Blog from '../../components/shared/Blog/Blog';
 import useFetch from '../../hooks/useFetch';
+import { Helmet } from 'react-helmet-async';
 
 
 
@@ -11,6 +12,9 @@ const Blogs = () => {
     
     return (
         <Main>
+            <Helmet>
+                <title>Blog</title>
+            </Helmet>
              <article className="mt-5 mb-4">
                 <Container>
                     <Row className="ms-0 me-0">

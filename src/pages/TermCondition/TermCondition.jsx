@@ -1,19 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Main from "../../layout/Main";
 import { Container } from "react-bootstrap";
 import { Row } from "react-bootstrap";
 import { Col } from "react-bootstrap";
 import classes from "./TermCondition.module.css";
 import SectionTitle from "../../components/shared/SectionTitle/SectionTitle";
+import { Helmet } from "react-helmet-async";
 
 const TermCondition = () => {
+    
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <Main>
+            <Helmet>
+                <title>TermCondition</title>
+            </Helmet>
             <Container className="my-5">
                 <Row>
                     <Col md={10} className="m-auto bg-white mb-4">
                         <div className={classes.termCondition}>
-                           <SectionTitle title="Term And Condition"/>
+                            <SectionTitle title="Term And Condition" />
                             <p className={classes.description}>
                                 1. Introduction This website is operated by
                                 [Merchant Name]. The terms “we”, “us”, and “our”

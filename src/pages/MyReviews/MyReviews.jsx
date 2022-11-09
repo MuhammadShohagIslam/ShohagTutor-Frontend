@@ -5,6 +5,7 @@ import axios from "axios";
 import { useAuth } from "../../contexts/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import ReviewTable from "../../components/shared/ReviewTable/ReviewTable";
+import { Helmet } from "react-helmet-async";
 const MyReviews = () => {
     const [reviewsBySpecificUser, setReviewsBySpecificUser] = useState();
     const [loading, setLoading] = useState(true);
@@ -52,6 +53,9 @@ const MyReviews = () => {
 
     return (
         <Main>
+            <Helmet>
+                <title>MyReviews</title>
+            </Helmet>
             <Container className="mt-5">
                 <h3 className="text-center py-3">
                     '''Reviews Service By {user?.displayName}'''

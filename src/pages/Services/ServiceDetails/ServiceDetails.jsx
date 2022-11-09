@@ -10,6 +10,7 @@ import classes from "./ServiceDetails.module.css";
 import { avgRating } from "./../../../utils/avgRating";
 import { toast } from "react-hot-toast";
 import Review from "../../../components/shared/Review/Review";
+import { Helmet } from "react-helmet-async";
 
 const ServiceDetails = () => {
     const [showReviewModal, setShowReviewModal] = useState(false);
@@ -25,7 +26,7 @@ const ServiceDetails = () => {
     const { _id, name, description, price, img } = data;
 
     useEffect(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 0, behavior: "smooth" });
     }, []);
 
     const loadingReviews = useCallback(async () => {
@@ -93,6 +94,9 @@ const ServiceDetails = () => {
     };
     return (
         <Main>
+            <Helmet>
+                <title>ServiceDetails</title>
+            </Helmet>
             {loading ? (
                 <div
                     style={{ height: "400px" }}

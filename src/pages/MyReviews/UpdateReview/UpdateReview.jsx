@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 import Main from "../../../layout/Main";
+import { Helmet } from "react-helmet-async";
 
 const UpdateReview = () => {
     const [comment, setComment] = useState("");
@@ -80,6 +81,9 @@ const UpdateReview = () => {
     console.log(id);
     return (
         <Main>
+            <Helmet>
+                <title>UpdateReview</title>
+            </Helmet>
             <Container className="my-5">
                 <Row>
                     {loading ? (

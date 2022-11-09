@@ -3,6 +3,7 @@ import { Container, Row, Spinner } from "react-bootstrap";
 import ServiceCard from "../../components/shared/ServiceCard/ServiceCard";
 import Main from "../../layout/Main";
 import useFetch from "./../../hooks/useFetch";
+import { Helmet } from "react-helmet-async";
 
 const Services = () => {
     const { data, loading } = useFetch("http://localhost:5000/services");
@@ -13,6 +14,9 @@ const Services = () => {
 
     return (
         <Main>
+            <Helmet>
+                <title>Services</title>
+            </Helmet>
             <Container className="py-5">
                 <Row>
                     {loading ? (

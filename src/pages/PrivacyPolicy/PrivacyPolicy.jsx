@@ -1,19 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { Col } from "react-bootstrap";
 import { Row } from "react-bootstrap";
 import classes from "./PrivacyPolicy.module.css";
 import Main from "./../../layout/Main";
 import SectionTitle from "../../components/shared/SectionTitle/SectionTitle";
+import { Helmet } from "react-helmet-async";
 
 const PrivacyPolicy = () => {
+    
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <Main>
+            <Helmet>
+                <title>PrivacyPolicy</title>
+            </Helmet>
             <Container className="my-5">
                 <Row>
                     <Col md={12} className="m-auto bg-white mb-4">
                         <div className={classes.privacyPolicy}>
-                            <SectionTitle title= "Privacy Policy"/>
+                            <SectionTitle title="Privacy Policy" />
                             <p className={classes.description}>
                                 We are committed to maintaining the accuracy,
                                 confidentiality, and security of your personally

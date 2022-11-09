@@ -6,6 +6,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { Container, Spinner, Row, Col, Button, Form } from "react-bootstrap";
 import { FaGoogle } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 
 const Signup = () => {
     const [isFetching, setIsFetching] = useState(true);
@@ -92,6 +93,9 @@ const Signup = () => {
 
     return (
         <Main>
+            <Helmet>
+                <title>SignUp</title>
+            </Helmet>
             {isFetching ? (
                 <div
                     style={{ height: "400px" }}

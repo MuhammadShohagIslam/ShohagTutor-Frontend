@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Main from "../../layout/Main";
-import { Form, Button, Container, Col, Row,Spinner } from "react-bootstrap";
+import { Form, Button, Container, Col, Row, Spinner } from "react-bootstrap";
 import { FaGoogle } from "react-icons/fa";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { useAuth } from "./../../contexts/AuthProvider/AuthProvider";
 import { GoogleAuthProvider } from "firebase/auth";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
     const [isFetching, setIsFetching] = useState(true);
@@ -74,6 +75,9 @@ const Login = () => {
 
     return (
         <Main>
+            <Helmet>
+                <title>Login</title>
+            </Helmet>
             {isFetching ? (
                 <div
                     style={{ height: "400px" }}

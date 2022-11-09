@@ -6,18 +6,21 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AuthProvider from "./contexts/AuthProvider/AuthProvider";
-import 'react-photo-view/dist/react-photo-view.css';
+import { HelmetProvider } from "react-helmet-async";
+import "react-photo-view/dist/react-photo-view.css";
+const helmetContext = {};
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <React.StrictMode>
         <BrowserRouter>
             <AuthProvider>
-                <App />
+                <HelmetProvider context={helmetContext}>
+                    <App />
+                </HelmetProvider>
             </AuthProvider>
         </BrowserRouter>
     </React.StrictMode>
 );
-
 
 reportWebVitals();
