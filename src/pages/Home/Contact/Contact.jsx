@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Col, Row } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import SectionTitle from "./../../../components/shared/SectionTitle/SectionTitle";
 import { GoLocation } from "react-icons/go";
 import { HiOutlineMail } from "react-icons/hi";

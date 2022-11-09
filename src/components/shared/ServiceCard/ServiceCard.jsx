@@ -4,24 +4,39 @@ import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 import classes from "./ServiceCard.module.css";
 import { avgRating } from "../../../utils/avgRating";
-import useFetch from './../../../hooks/useFetch';
+import useFetch from "./../../../hooks/useFetch";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 
 const ServiceCard = ({ service }) => {
     const { _id, img, name, description, price } = service;
-    const { data: reviews, loading: reviewLoading } = useFetch(
+    const { data: reviews } = useFetch(
         `http://localhost:5000/reviews?id=${_id}`
     );
     return (
         <>
             <Col lg={4} md={6} sm={12} className="mb-4">
                 <Card className={classes.serviceCard}>
-                    <Card.Header className="bg-white text-center py-2 pb-3">{avgRating(reviews)}</Card.Header>
-                    <Card.Img
-                        className={`${classes.serviceCardImage} rounded-0`}
-                        variant="top"
-                        alt={name}
-                        src={img}
-                    />
+                    <Card.Header className="bg-white text-center py-2 pb-3">
+                        {avgRating(reviews)}
+                    </Card.Header>
+                    <PhotoProvider
+                        speed={() => 800}
+                        easing={(type) =>
+                            type === 2
+                                ? "cubic-bezier(0.36, 0, 0.66, -0.56)"
+                                : "cubic-bezier(0.34, 1.56, 0.64, 1)"
+                        }
+                    >
+                        <PhotoView src={img}>
+                            <Card.Img
+                                className={`${classes.serviceCardImage} rounded-0`}
+                                variant="top"
+                                alt={name}
+                                src={img}
+                            />
+                        </PhotoView>
+                    </PhotoProvider>
+
                     <Card.Body>
                         <Card.Title> {name}</Card.Title>
                         <Card.Text className="text-justify">
@@ -31,8 +46,7 @@ const ServiceCard = ({ service }) => {
                         </Card.Text>
                         <div className={classes.serviceCostRating}>
                             <h5>
-                                <span>Per Month: </span>
-                                ${price}
+                                <span>Per Month: </span>${price}
                             </h5>
                         </div>
                         <Link
