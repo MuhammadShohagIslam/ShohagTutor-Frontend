@@ -97,7 +97,7 @@ const ServiceDetails = () => {
                                 className={`${classes.serviceDetailsWrapper} bg-dark text-white h-100`}
                             >
                                 <h2>{name}</h2>
-                                <h5>Per Month: {price}</h5>
+                                <h5>Per Month: ${price}</h5>
                                 {avgRating(reviews)}
                                 <hr className="border border-white opacity-50 mt-3"></hr>
                                 <p className="pb-2">{description}</p>

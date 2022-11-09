@@ -90,7 +90,7 @@ const Signup = () => {
     return (
         <Main>
             <Container className="my-5">
-                <Row>
+                <Row className="m-0">
                     <Col lg={5} className="m-auto bg-dark p-5">
                         <h2 className="text-white text-center mb-5">
                             Sign Up Connected With Me

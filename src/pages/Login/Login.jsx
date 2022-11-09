@@ -68,7 +68,7 @@ const Login = () => {
     return (
         <Main>
             <Container className="my-5">
-                <Row>
+                <Row className="m-0">
                     <Col lg={5} className="m-auto bg-dark p-5">
                         <h2 className="text-white text-center mb-3">Log in</h2>
                         <div className="d-grid gap-2">

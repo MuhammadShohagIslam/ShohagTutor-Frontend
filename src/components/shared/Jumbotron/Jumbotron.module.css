@@ -15,7 +15,7 @@
     height: 100%;
     left: 0;
     top: 0;
-    opacity: .93;
+    opacity: .75;
 }
 .jumbotronWrapper {
     display: flex;
@@ -43,7 +43,7 @@
     z-index: 10;
 }
 .jumbotronTypeEffect{
-    color: #08a7f6;
+    color: #fff;
 }
 
 /* Start Small Devices */

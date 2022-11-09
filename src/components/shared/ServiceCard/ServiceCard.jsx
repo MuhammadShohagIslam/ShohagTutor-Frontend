@@ -32,7 +32,7 @@ const ServiceCard = ({ service }) => {
                         <div className={classes.serviceCostRating}>
                             <h5>
                                 <span>Per Month: </span>
-                                {price}
+                                ${price}
                             </h5>
                         </div>
                         <Link
