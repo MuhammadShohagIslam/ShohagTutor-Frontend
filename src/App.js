@@ -1,16 +1,17 @@
 import { Toaster } from "react-hot-toast";
 import { Route, Routes } from "react-router-dom";
+import AddService from "./pages/AddService/AddService";
 import Blogs from "./pages/Blogs/Blogs";
 import Home from "./pages/Home/Home/Home";
 import Login from "./pages/Login/Login";
+import MyReviews from "./pages/MyReviews/MyReviews";
+import UpdateReview from "./pages/MyReviews/UpdateReview/UpdateReview";
+import NotFound from "./pages/NotFound/NotFound";
+import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
 import ServiceDetails from "./pages/Services/ServiceDetails/ServiceDetails";
 import Services from "./pages/Services/Services";
 import Signup from "./pages/Signup/Signup";
 import TermCondition from "./pages/TermCondition/TermCondition";
-import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
-import MyReviews from "./pages/MyReviews/MyReviews";
-import UpdateReview from "./pages/MyReviews/UpdateReview/UpdateReview";
-import AddService from "./pages/AddService/AddService";
 import PrivateRouter from "./routers/PrivateRouter/PrivateRouter";
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/term-condition" element={<TermCondition />} />
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                <Route path="*" element={<NotFound />} />
             </Routes>
         </>
     );
