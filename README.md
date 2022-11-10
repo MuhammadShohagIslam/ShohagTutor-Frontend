@@ -1,71 +1,101 @@
-# Getting Started with Create React App
+<h2 align="center">I am Muhammad Jhohirul Islam Shohag</h2>
+<p align="center">I am Backend Focus Full-Stack Developer</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Let's Talk About My ShohagTutor Application
 
-## Available Scripts
+### ShohagTutor Application Live: [https://shohagtutor.firebaseapp.com/](https://shohagtutor.firebaseapp.com/)
 
-In the project directory, you can run:
+### Description About My Project
 
-### `npm start`
+-   ### Home Page
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<div align="center">
+    <img width="450" src="https://github.com/Porgramming-Hero-web-course/b6a11-service-review-client-side-MuhammadShohagIslam/blob/main/preview/homeJumbotron.JPG">
+</div> 
+<p>On the home page, we can get the three of service, about me, contact and a header(jumbotron)</p>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+-   ### AboutMe Section
 
-### `npm test`
+<div align="center">
+    <img width="450" src="https://github.com/Porgramming-Hero-web-course/b6a11-service-review-client-side-MuhammadShohagIslam/blob/main/preview/about-me.JPG">
+</div> 
+<p>On the home page, we can get the about me section which explain of my profile</p>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+-   ### Contact Section
 
-### `npm run build`
+<div align="center">
+    <img width="450" src="https://github.com/Porgramming-Hero-web-course/b6a11-service-review-client-side-MuhammadShohagIslam/blob/main/preview/contact.JPG">
+</div> 
+<p>On the home page, we can get the contact section which explain of my location</p>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+-   ### Services Page
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<div align="center">
+    <img width="450" src="https://github.com/Porgramming-Hero-web-course/b6a11-service-review-client-side-MuhammadShohagIslam/blob/main/preview/services.JPG">
+</div> 
+<p>On the Services page, We can get the total Services</p>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+-   ### Service Details Page
 
-### `npm run eject`
+<div align="center">
+    <img width="450" src="https://github.com/Porgramming-Hero-web-course/b6a11-service-review-client-side-MuhammadShohagIslam/blob/main/preview/serviceDetails.JPG">
+</div> 
+<p>On the Service Details page, We can get specific service details and we can get details of the service and reviews of the user</p>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+-   ### Add Service Page
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<div align="center">
+    <img width="450" src="https://github.com/Porgramming-Hero-web-course/b6a11-service-review-client-side-MuhammadShohagIslam/blob/main/preview/addService.JPG">
+</div> 
+<p>On the Add Service page, We can add new service on the project</p>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+-   ### My Reviews Page
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<div align="center">
+    <img width="450" src="https://github.com/Porgramming-Hero-web-course/b6a11-service-review-client-side-MuhammadShohagIslam/blob/main/preview/myReviews.JPG">
+</div> 
+<p>On the My Reviews page, We can see all of your reviews which one we added review specific service and we can get delete and update functionality</p>
 
-## Learn More
+-   ### Update Reviews Page
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<div align="center">
+    <img width="450" src="https://github.com/Porgramming-Hero-web-course/b6a11-service-review-client-side-MuhammadShohagIslam/blob/main/preview/updatedReview.JPG">
+</div> 
+<p>On the Update Reviews Page, We can update existing reviews</p>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+-   ### Blog Page
 
-### Code Splitting
+<div align="center">
+    <img width="450" src="https://github.com/Porgramming-Hero-web-course/b6a11-service-review-client-side-MuhammadShohagIslam/blob/main/preview/blog.JPG">
+</div> 
+<p>On the Blog page, we have blog section where we can read blog related technology</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+-   ### Sign Up Page
+<div align="center">
+    <img width="450" src="https://github.com/Porgramming-Hero-web-course/b6a11-service-review-client-side-MuhammadShohagIslam/blob/main/preview/signup.JPG">
+</div> 
+<p>On the Register page, user can login with google and fullName, PhotoURL, email and password.Implemented error functionality with toast message</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+-   ### Login Page
+<div align="center">
+    <img width="450" src="https://github.com/Porgramming-Hero-web-course/b6a11-service-review-client-side-MuhammadShohagIslam/blob/main/preview/login.JPG">
+</div> 
+<p>On the Login page, user can login with google, email and password.Implemented error functionality with toast message</p>
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-"# b6a11-service-review-client-side-MuhammadShohagIslam" 
+# Let's See Which Technology use of our project
+- HTML
+- CSS
+- REACT
+- React-Router-Dom
+- Aos
+- Axios
+- React-Icons
+- Sweetalert2
+- Typewriter-Effect
+- React-Bootstrap-Router
+- React-Bootstrap
+- React-photo-view
+- React-hot-toast
+- React-helmet-async
