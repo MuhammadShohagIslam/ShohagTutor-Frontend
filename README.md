@@ -45,7 +45,7 @@
 -   ### Add Service Page
 
 <div align="center">
-    <img width="450" src="https://github.com/Porgramming-Hero-web-course/b6a11-service-review-client-side-MuhammadShohagIslam/blob/main/preview/addService.JPG">
+    <img width="450" src="https://github.com/Porgramming-Hero-web-course/b6a11-service-review-client-side-MuhammadShohagIslam/blob/main/preview/adService.JPG">
 </div> 
 <p>On the Add Service page, We can add new service on the project</p>
 
