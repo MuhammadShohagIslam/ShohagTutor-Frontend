@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from "react";
-import Main from "../../layout/Main";
-import { Container, Row, Spinner } from "react-bootstrap";
 import axios from "axios";
-import { useAuth } from "../../contexts/AuthProvider/AuthProvider";
+import React, { useEffect, useState } from "react";
+import { Container, Row, Spinner } from "react-bootstrap";
+import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 import ReviewTable from "../../components/shared/ReviewTable/ReviewTable";
-import { Helmet } from "react-helmet-async";
+import { useAuth } from "../../contexts/AuthProvider/AuthProvider";
+import Main from "../../layout/Main";
 const MyReviews = () => {
     const [reviewsBySpecificUser, setReviewsBySpecificUser] = useState([]);
     const [loading, setLoading] = useState(true);
     const { user, logOut } = useAuth();
-   
+
     useEffect(() => {
         setLoading(true);
         axios
             .get(
-                `http://localhost:5000/reviews/user?name=${user?.displayName}&email=${user?.email}`,
+                `https://server-smoky-ten.vercel.app/reviews/user?name=${user?.displayName}&email=${user?.email}`,
                 {
                     headers: {
                         authorization: `Bear ${localStorage.getItem(
@@ -37,13 +37,16 @@ const MyReviews = () => {
                     return logOut();
                 }
                 setLoading(false);
+            })
+            .finally(() => {
+                setLoading(false);
             });
     }, [user?.displayName, user?.email, logOut]);
 
     const handleReviewDelete = async (e, id, serviceName) => {
         console.log(id);
         const response = await axios.delete(
-            `http://localhost:5000/reviews/${id}`
+            `https://server-smoky-ten.vercel.app/reviews/${id}`
         );
         const data = await response.data;
         if (data?.deletedCount > 0) {

@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { GoogleAuthProvider } from "firebase/auth";
+import React, { useEffect, useState } from "react";
+import { Button, Col, Container, Form, Row, Spinner } from "react-bootstrap";
+import { Helmet } from "react-helmet-async";
+import { toast } from "react-hot-toast";
+import { FaGoogle } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import Main from "../../layout/Main";
 import { useAuth } from "./../../contexts/AuthProvider/AuthProvider";
-import { GoogleAuthProvider } from "firebase/auth";
-import { useNavigate, Link } from "react-router-dom";
-import { toast } from "react-hot-toast";
-import { Container, Spinner, Row, Col, Button, Form } from "react-bootstrap";
-import { FaGoogle } from "react-icons/fa";
-import { Helmet } from "react-helmet-async";
-import axios from "axios";
 
 const Signup = () => {
     const [isFetching, setIsFetching] = useState(true);
     const [accepted, setAccepted] = useState(false);
     const {
+        user,
         createUser,
         userProfileUpdate,
         registerAndLoginWithProvider,
@@ -49,14 +51,13 @@ const Signup = () => {
         createUser(email, password)
             .then((result) => {
                 handleProfileUpdate(fullName, photoURL);
-                const user = result.user;
-
+                const userCredential = result.user;
                 const currentUser = {
-                    name: user.displayName,
-                    email: user.email,
+                    name: user?.displayName || userCredential?.displayName || fullName,
+                    email: userCredential.email || email,
                 };
                 axios
-                    .post("http://localhost:5000/jwt", currentUser, {
+                    .post("https://server-smoky-ten.vercel.app/jwt", currentUser, {
                         headers: {
                             "Content-Type": "application/json",
                         },
@@ -64,9 +65,17 @@ const Signup = () => {
                     .then((res) => {
                         const data = res.data;
                         localStorage.setItem("tutor-token", data.token);
+                        form.reset();
+                        Swal.fire({
+                            position: "top",
+                            icon: "success",
+                            title: "Sign Up Successfully",
+                            showConfirmButton: false,
+                            timer: 2500,
+                        });
+                        navigate("/");
                     });
-                form.reset();
-                navigate("/");
+               
             })
             .catch((error) => {
                 toast.error(error.message.split("Firebase: ").join(""));
@@ -99,13 +108,13 @@ const Signup = () => {
         registerAndLoginWithProvider(provider)
             .then((result) => {
                 const user = result.user;
-
+                console.log(user)
                 const currentUser = {
                     name: user?.displayName,
                     email: user?.email,
                 };
                 axios
-                    .post("http://localhost:5000/jwt", currentUser, {
+                    .post("https://server-smoky-ten.vercel.app/jwt", currentUser, {
                         headers: {
                             "Content-Type": "application/json",
                         },
@@ -159,6 +168,7 @@ const Signup = () => {
                                         Continue with Google
                                     </h5>
                                 </Button>
+                            
                             </div>
                             <h3 className="text-white text-center mt-2">Or</h3>
                             <Form onSubmit={handleSubmit}>

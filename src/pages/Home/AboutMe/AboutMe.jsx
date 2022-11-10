@@ -18,7 +18,7 @@ const AboutMe = () => {
                 title="About Me"
                 info="I am Reviewing classroom or curricula topics and assignments. Assisting students with homework, projects, test preparation, papers, research and other academic tasks."
             />
-            <Row data-aos="fade-up" className="m-0">
+            <Row data-aos="fade-up"  data-aos-delay="1" className="m-0">
                 <Col md={6} lg={4}>
                     <div className={classes.profileImgWrapper}>
                         <Image

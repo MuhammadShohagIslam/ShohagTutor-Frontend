@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
-import StarRatings from "react-star-ratings";
-import { Form, Button, Container, Row, Col, Spinner } from "react-bootstrap";
-import { useParams } from "react-router-dom";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Button, Col, Container, Form, Row, Spinner } from "react-bootstrap";
+import { Helmet } from "react-helmet-async";
+import { useParams } from "react-router-dom";
+import StarRatings from "react-star-ratings";
 import Swal from "sweetalert2";
 import Main from "../../../layout/Main";
-import { Helmet } from "react-helmet-async";
 
 const UpdateReview = () => {
     const [comment, setComment] = useState("");
@@ -23,7 +23,7 @@ const UpdateReview = () => {
         try {
             setLoading(true);
             const response = await axios.get(
-                `http://localhost:5000/reviews/${id}`
+                `https://server-smoky-ten.vercel.app/reviews/${id}`
             );
             const data = await response.data;
             setReview(data);
@@ -37,7 +37,7 @@ const UpdateReview = () => {
 
     const updateReview = async (reviewUpdateObj) => {
         const response = await axios.put(
-            `http://localhost:5000/reviews/${id}`,
+            `https://server-smoky-ten.vercel.app/reviews/${id}`,
             reviewUpdateObj,
             {
                 headers: {

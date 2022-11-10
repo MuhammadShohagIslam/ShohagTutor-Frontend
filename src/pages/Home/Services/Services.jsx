@@ -1,16 +1,16 @@
 import React from "react";
-import { Container, Row, Button } from "react-bootstrap";
+import { Button, Container, Row, Spinner } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import SectionTitle from "./../../../components/shared/SectionTitle/SectionTitle";
 import ServiceCard from "./../../../components/shared/ServiceCard/ServiceCard";
-import { Spinner } from "react-bootstrap";
 import useFetch from "./../../../hooks/useFetch";
-import { Link } from "react-router-dom";
-import classes from './Services.module.css'
+import classes from './Services.module.css';
 
 const Services = () => {
     const { data, loading } = useFetch(
-        "http://localhost:5000/services?limit=3"
+        "https://server-smoky-ten.vercel.app/services?limit=3"
     );
+
     return (
         <>
             <Container className="py-5">

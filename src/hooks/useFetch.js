@@ -5,9 +5,9 @@ const useFetch = (uri, isToken = false, method) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        setLoading(true);
         const apiFetch = async () => {
             try {
+                setLoading(true);
                 let response = await fetch(uri, {
                     method: method || "GET",
                     headers: {
@@ -25,10 +25,6 @@ const useFetch = (uri, isToken = false, method) => {
             }
         };
         apiFetch();
-
-        return () => {
-            apiFetch();
-        };
     }, [uri, isToken, method]);
 
     return {

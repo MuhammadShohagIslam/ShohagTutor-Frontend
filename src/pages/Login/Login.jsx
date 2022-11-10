@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
-import Main from "../../layout/Main";
-import { Form, Button, Container, Col, Row, Spinner } from "react-bootstrap";
-import { FaGoogle } from "react-icons/fa";
-import { Link, useNavigate, useLocation } from "react-router-dom";
-import { toast } from "react-hot-toast";
-import { useAuth } from "./../../contexts/AuthProvider/AuthProvider";
-import { GoogleAuthProvider } from "firebase/auth";
-import { Helmet } from "react-helmet-async";
 import axios from "axios";
+import { GoogleAuthProvider } from "firebase/auth";
+import React, { useEffect, useState } from "react";
+import { Button, Col, Container, Form, Row, Spinner } from "react-bootstrap";
+import { Helmet } from "react-helmet-async";
+import { toast } from "react-hot-toast";
+import { FaGoogle } from "react-icons/fa";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import Main from "../../layout/Main";
+import { useAuth } from "./../../contexts/AuthProvider/AuthProvider";
 
 const Login = () => {
     const [isFetching, setIsFetching] = useState(true);
@@ -49,7 +50,7 @@ const Login = () => {
                     email: user.email,
                 };
                 axios
-                    .post("http://localhost:5000/jwt", currentUser, {
+                    .post("https://server-smoky-ten.vercel.app/jwt", currentUser, {
                         headers: {
                             "Content-Type": "application/json",
                         },
@@ -57,10 +58,16 @@ const Login = () => {
                     .then((res) => {
                         const data = res.data;
                         localStorage.setItem("tutor-token", data.token);
+                        Swal.fire({
+                            position: "top",
+                            icon: "success",
+                            title: "Login Successfully",
+                            showConfirmButton: false,
+                            timer: 2500,
+                        });
                         navigate(from, { replace: true });
                     });
                 form.reset();
-                toast.success("Login Successfully!");
             })
             .catch((error) => {
                 toast.error(error.message.split("Firebase: ").join(""));
@@ -87,7 +94,7 @@ const Login = () => {
                     email: user?.email,
                 };
                 axios
-                    .post("http://localhost:5000/jwt", currentUser, {
+                    .post("https://server-smoky-ten.vercel.app/jwt", currentUser, {
                         headers: {
                             "Content-Type": "application/json",
                         },

@@ -11,7 +11,7 @@ const Blog = ({ blog }) => {
     }, []);
 
     return (
-        <Col data-aos="fade-up" md={8} className="m-auto bg-white mb-4">
+        <Col data-aos="fade-up" data-aos-delay="1" md={8} className="m-auto bg-white mb-4">
             <div className={classes.singleBlog}>
                 <h2 className={classes.blogTitle}>{blog.title}</h2>
                 <h6 className="mb-4">

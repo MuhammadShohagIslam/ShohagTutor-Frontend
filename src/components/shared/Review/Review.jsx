@@ -4,6 +4,7 @@ import classes from "./Reviews.module.css";
 import StarRatings from "react-star-ratings";
 import ReviewedImg from "../../../images/tutor.png";
 const Review = ({ review }) => {
+
     const { name, comment, img, star, reviewedAt } = review;
     return (
         <Card className="mb-3">

@@ -1,10 +1,10 @@
-import React from "react";
-import { Helmet } from "react-helmet-async";
-import Main from "../../layout/Main";
-import { Button, Form, Container, Row, Col } from "react-bootstrap";
-import { toast } from "react-hot-toast";
 import axios from "axios";
+import React from "react";
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { Helmet } from "react-helmet-async";
+import { toast } from "react-hot-toast";
 import Swal from "sweetalert2";
+import Main from "../../layout/Main";
 
 const AddService = () => {
     const handleServiceSubmit = (event) => {
@@ -42,7 +42,7 @@ const AddService = () => {
     const createNewService = async (newServiceObj) => {
         try {
             const response = await axios.post(
-                `http://localhost:5000/services`,
+                `https://server-smoky-ten.vercel.app/services`,
                 newServiceObj,
                 {
                     headers: {

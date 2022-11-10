@@ -1,12 +1,12 @@
 import React from 'react';
-import Main from '../../layout/Main';
-import { Container,Spinner,Row } from 'react-bootstrap';
+import { Container, Row, Spinner } from 'react-bootstrap';
+import { Helmet } from 'react-helmet-async';
 import Blog from '../../components/shared/Blog/Blog';
 import useFetch from '../../hooks/useFetch';
-import { Helmet } from 'react-helmet-async';
+import Main from '../../layout/Main';
 
 const Blogs = () => {
-    const {data, loading } = useFetch("http://localhost:5000/blogs");
+    const {data, loading } = useFetch("https://server-smoky-ten.vercel.app/blogs");
     
     return (
         <Main>

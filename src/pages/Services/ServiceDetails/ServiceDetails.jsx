@@ -1,18 +1,17 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { Container, Image, Row, Button, Spinner } from "react-bootstrap";
-import { Col } from "react-bootstrap";
-import { useParams, useNavigate, useLocation } from "react-router-dom";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Button, Col, Container, Image, Row, Spinner } from "react-bootstrap";
+import { Helmet } from "react-helmet-async";
+import { toast } from "react-hot-toast";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
+import Review from "../../../components/shared/Review/Review";
 import ReviewModal from "../../../components/shared/ReviewModal/ReviewModal";
 import { useAuth } from "../../../contexts/AuthProvider/AuthProvider";
-import useFetch from "../../../hooks/useFetch";
 import Main from "../../../layout/Main";
-import classes from "./ServiceDetails.module.css";
+import useFetch from "./../../../hooks/useFetch";
 import { avgRating } from "./../../../utils/avgRating";
-import { toast } from "react-hot-toast";
-import Review from "../../../components/shared/Review/Review";
-import { Helmet } from "react-helmet-async";
-import axios from "axios";
-import Swal from "sweetalert2";
+import classes from "./ServiceDetails.module.css";
 
 const ServiceDetails = () => {
     const [showReviewModal, setShowReviewModal] = useState(false);
@@ -24,22 +23,23 @@ const ServiceDetails = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const { user } = useAuth();
-    const { data, loading } = useFetch(`http://localhost:5000/services/${id}`);
+    const { data, loading } = useFetch(`https://server-smoky-ten.vercel.app/services/${id}`);
     const { _id, name, description, price, img } = data;
 
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: "smooth" });
     }, []);
 
-    const loadingReviews = useCallback(async () => {
-        const response = await fetch(`http://localhost:5000/reviews?id=${id}`);
-        const data = await response.json();
-        setReviews(data);
-    }, [id]);
-
     useEffect(() => {
+        const loadingReviews = async () => {
+            const response = await axios.get(
+                `https://server-smoky-ten.vercel.app/reviews?id=${id}`
+            );
+            const data = await response.data;
+            setReviews(data);
+        };
         loadingReviews();
-    }, [loadingReviews]);
+    }, [id]);
 
     const handleReviewShowModal = () => {
         if (user && user?.uid) {
@@ -57,16 +57,27 @@ const ServiceDetails = () => {
 
     const createReview = async (reviewObj) => {
         axios
-            .post("http://localhost:5000/reviews", reviewObj, {
+            .post("https://server-smoky-ten.vercel.app/reviews", reviewObj, {
                 headers: {
                     "Content-Type": "application/json",
                 },
             })
-            .then((res) => {
+            .then(async (res) => {
                 const data = res.data;
                 if (data?.acknowledged) {
-                    toast.success("Review Created Successfully");
+                    Swal.fire({
+                        position: "top",
+                        icon: "success",
+                        title: "Review Created Successfully",
+                        showConfirmButton: false,
+                        timer: 2500,
+                    });
                 }
+                const response = await axios.get(
+                    `https://server-smoky-ten.vercel.app/reviews?id=${_id}`
+                );
+                const d = await response.data;
+                setReviews(d);
             })
             .catch((error) => {
                 Swal.fire({
@@ -94,16 +105,11 @@ const ServiceDetails = () => {
             };
             createReview(reviewObj);
             setComment("");
-            loadingReviews();
-            const response = await fetch(
-                `http://localhost:5000/reviews?id=${id}`
-            );
-            const data = await response.json();
-            setReviews(data);
         } catch (error) {
             toast.error(error.message);
         }
     };
+    console.log(reviews);
     return (
         <Main>
             <Helmet>
@@ -184,6 +190,7 @@ const ServiceDetails = () => {
                                                 <>
                                                     {reviews.map((review) => (
                                                         <Review
+                                            
                                                             key={review._id}
                                                             review={review}
                                                         />
